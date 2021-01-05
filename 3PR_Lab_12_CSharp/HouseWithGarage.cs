@@ -58,28 +58,28 @@ namespace _3PR_Lab_12_CSharp
 			return s;
 		}
 
-        double getVolume()
+        public override double getVolume()
 		{
 			return (sideLength * sideLength * floorHeight * floorAmount) +
 				(getSideLength() * getSideWidth() * getHeight());
 		}
 
-		void getGarage()
+		public void getGarage()
 		{
 			garage.getGarage();
 		}
 
-		double getSideLength()
+		public double getSideLength()
 		{
 			return garage.getSideLength();
 		}
 
-		double getSideWidth()
+		public double getSideWidth()
 		{
 			return garage.getSideWidth();
 		}
 
-		double getHeight()
+		public double getHeight()
 		{
 			return garage.getHeight();
 		}

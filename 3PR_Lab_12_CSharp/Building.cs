@@ -35,6 +35,8 @@ namespace _3PR_Lab_12_CSharp
 			this.facade.WindowsAmount = windowsAmount;
 			this.facade.OpenedWindowsAmount = openedWindowsAmount;
 		}
+		// Название строительной компании.
+		public static string companyName = "Альянс";
 		// Конструктор без параметров.
 		public Building()
 		{
@@ -57,12 +59,23 @@ namespace _3PR_Lab_12_CSharp
 				this.setBuilding("Жилое здание", 1.0, 1.0, 1.0, 1, 0, 0);
 			countOfBuildings++;
 		}
-		// Название строительной компании.
-		public static string companyName = "Альянс";
 		// Статический метод по получению количества зданий.
 		public static int getCountOfBuildings()
 		{
 			return countOfBuildings;
+		}
+
+		public virtual double getVolume()
+		{
+			return sideLength * sideLength * floorHeight * floorAmount;
+		}
+
+		public bool volumeLessThan(double Number)
+		{
+			if (getVolume() <= Number)
+				return true;
+			else
+				return false;
 		}
 
 		public static void array1Forming(Building[] array, int n)
