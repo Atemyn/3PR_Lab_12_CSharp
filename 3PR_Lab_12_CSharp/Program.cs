@@ -24,6 +24,13 @@ namespace _3PR_Lab_12_CSharp
 			f2 = h1.volumeLessThan(375.0);
 			Console.WriteLine("f1 = " + f1);
 			Console.WriteLine("f2 = " + f2 + "\n");
+			// Производные классы от абстрактного класса.
+			SquareBaseBuilding s = new SquareBaseBuilding(5.0, 10.0, 1000.0);
+			CircleBaseBuilding c = new CircleBaseBuilding(5.0, 10.0, 1000.0);
+			TetrahedronBuilding t = new TetrahedronBuilding(5.0, 10.0, 1000.0);
+			Console.WriteLine("Здание с квадратным основанием:" + "\nОбъем: " + s.getVolume() + "\nПлотность: " + s.getDensity() + "\n");
+			Console.WriteLine("Здание с круглым основанием:" + "\nОбъем: " + c.getVolume() + "\nПлотность: " + c.getDensity() + "\n");
+			Console.WriteLine("Здание-тетраэдр:" + "\nОбъем: " + t.getVolume() + "\nПлотность: " + t.getDensity() + "\n");
 			/*...............................*/
 		}
 	}
