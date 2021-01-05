@@ -8,6 +8,19 @@ namespace _3PR_Lab_12_CSharp
 	{
 		private int windowsAmount;
 		private int openedWindowsAmount;
+
+		public Facade()
+		{
+			windowsAmount = 0;
+			openedWindowsAmount = 0;
+		}
+
+		public Facade(int windowsAmount, int openedWindowsAmount)
+		{
+			this.windowsAmount = windowsAmount;
+			this.openedWindowsAmount = openedWindowsAmount;
+		}
+
 		public int WindowsAmount
 		{
 			get

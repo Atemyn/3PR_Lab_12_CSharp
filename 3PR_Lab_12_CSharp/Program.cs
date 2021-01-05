@@ -54,6 +54,18 @@ namespace _3PR_Lab_12_CSharp
 			Launch(rock);
 			Launch(testStr);
 			Launch(testInt);
+			// Мелкое копирование.
+			Facade facade1 = new Facade(5, 5);
+			Garage garage1 = new Garage(1, 2, 3);
+			HouseWithGarage hg1 = new HouseWithGarage("Коттедж", 5.0, 1.0, 3.0, 5, facade1, garage1);
+
+			Facade facade2 = new Facade(4, 4);
+			Garage garage2 = new Garage(5, 6, 7);
+			HouseWithGarage hg2 = new HouseWithGarage("Коттедж", 5.0, 1.0, 3.0, 5, facade1, garage1);
+
+			hg1 = (HouseWithGarage)hg2.Clone();
+			hg2.input();
+			Console.WriteLine("hg1 = \n" + hg1);
 			/*...............................*/
 		}
 	}

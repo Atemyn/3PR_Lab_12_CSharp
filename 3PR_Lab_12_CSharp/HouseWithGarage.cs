@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _3PR_Lab_12_CSharp
 {
-    class HouseWithGarage : Building
+    class HouseWithGarage : Building, ICloneable
     {
 		private Garage garage = new Garage();
 
@@ -17,6 +17,19 @@ namespace _3PR_Lab_12_CSharp
 			double sideWidthG, double heightG) :base(typeOfBuilding, sideLength, basementHeight, floorHeight, floorAmount, windowsAmount, openedWindowsAmount)
 		{
 			this.garage.setGarage(sideLengthG, sideWidthG, heightG);
+		}
+
+		public HouseWithGarage(string typeOfBuilding, double sideLength, double basementHeight,
+			double floorHeight, int floorAmount, Facade facade, Garage garage)
+		{
+			this.typeOfBuilding = typeOfBuilding;
+			this.sideLength = sideLength;
+			this.basementHeight = basementHeight;
+			this.floorHeight = floorHeight;
+			this.floorAmount = floorAmount;
+			this.stabilityFactor = (double)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
+			this.facade = facade;
+			this.garage = garage;
 		}
 		/* Функция по выводу свойств экземпляра класса Building. */
 		public void get()
@@ -82,6 +95,12 @@ namespace _3PR_Lab_12_CSharp
 		public double getHeight()
 		{
 			return garage.getHeight();
+		}
+
+		public object Clone()
+		{
+			return new HouseWithGarage(typeOfBuilding, sideLength, basementHeight,
+				floorHeight, floorAmount, facade, garage);
 		}
 	}
 }
