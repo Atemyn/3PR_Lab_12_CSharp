@@ -31,7 +31,7 @@ namespace _3PR_Lab_12_CSharp
 			this.basementHeight = basementHeight;
 			this.floorHeight = floorHeight;
 			this.floorAmount = floorAmount;
-			this.stabilityFactor = (float)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
+			this.stabilityFactor = (double)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
 			this.facade.WindowsAmount = windowsAmount;
 			this.facade.OpenedWindowsAmount = openedWindowsAmount;
 		}
@@ -42,7 +42,7 @@ namespace _3PR_Lab_12_CSharp
 			countOfBuildings++;
 		}
 		// Конструктор с 1 параметром.
-		public Building(float sideLength)
+		public Building(double sideLength)
 		{
 			this.setBuilding("Жилое здание", sideLength, 1.0, 1.0, 1, 0, 0);
 			if (stabilityFactor < 1)
@@ -50,7 +50,7 @@ namespace _3PR_Lab_12_CSharp
 			countOfBuildings++;
 		}
 		// Конструктор со всеми параметрами.
-		public Building(string typeOfBuilding, float sideLength, float basementHeight, float floorHeight, int floorAmount, int windowsAmount, int openedWindowsAmount)
+		public Building(string typeOfBuilding, double sideLength, double basementHeight, double floorHeight, int floorAmount, int windowsAmount, int openedWindowsAmount)
 		{
 			this.setBuilding(typeOfBuilding, sideLength, basementHeight, floorHeight, floorAmount, windowsAmount, openedWindowsAmount);
 			if (stabilityFactor < 1)
@@ -233,7 +233,7 @@ namespace _3PR_Lab_12_CSharp
 
 			facade.inputFacade();
 			// Расчет коэффицента устойчивости.
-			stabilityFactor = (float)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
+			stabilityFactor = (double)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
 			// Если коэффициент устойчивости меньше 1 - здание упадет; необхлдим повторный ввод характеристик
 			if (stabilityFactor < 1.0)
 			{
@@ -289,7 +289,7 @@ namespace _3PR_Lab_12_CSharp
 			this.facade.OpenedWindowsAmount += build.facade.OpenedWindowsAmount;
 
 			// Расчет нового коэффициента устойчивости и проверка его корректности.
-			stabilityFactor = (float)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
+			stabilityFactor = (double)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
 			if (stabilityFactor < 1)
 			{
 				Console.WriteLine("К сожалению, после совмещения двух зданий новое здание сразу же развалилось, так как его коэффициент устойчивости k = " + stabilityFactor + " меньше нуля.\n");
@@ -314,7 +314,7 @@ namespace _3PR_Lab_12_CSharp
 
 			floorAmount = floorAmount + floorsToAdd;
 			// Расчет нового коэффициента устойчивости и проверка его корректности.
-			stabilityFactor = (float)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
+			stabilityFactor = (double)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
 			if (stabilityFactor < 1.0)
 			{
 				Console.WriteLine("Коэффициент стабильности вашего здания k = " + stabilityFactor +
@@ -342,7 +342,7 @@ namespace _3PR_Lab_12_CSharp
 			}
 			// Расчет нового коэффициента устойчивости.
 			floorAmount = floorAmount - floorsToRemove;
-			stabilityFactor = (float)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
+			stabilityFactor = (double)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
 			Console.WriteLine("Этажи успешно удалены!");
 			// Отображение информации о здании.
 			get();

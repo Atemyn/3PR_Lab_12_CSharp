@@ -76,6 +76,16 @@ namespace _3PR_Lab_12_CSharp
 			openedWindowsAmount -= windowsToClose;
 		}
 
+		public int getWindowsAmount()
+		{
+			return windowsAmount;
+		}
+
+		public int getOpenedWindowsAmount()
+		{
+			return openedWindowsAmount;
+		}
+
 		public static Facade operator +(Facade firstFacade, Facade secondFacade)
 		{
 			Facade resultF = new Facade();

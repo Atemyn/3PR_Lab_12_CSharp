@@ -6,15 +6,15 @@ namespace _3PR_Lab_12_CSharp
 {
     class HouseWithGarage : Building
     {
-		private Garage garage;
+		private Garage garage = new Garage();
 
-		public HouseWithGarage()
+		public HouseWithGarage() : base()
 		{
 			this.garage.setGarage(1.0, 1.0, 1.0);
 		}
-		public HouseWithGarage(string typeOfBuilding, float sideLength, float basementHeight,
-			float floorHeight, int floorAmount, int windowsAmount, int openedWindowsAmount, float sideLengthG,
-			float sideWidthG, float heightG) :base(typeOfBuilding, sideLength, basementHeight, floorHeight, floorAmount, windowsAmount, openedWindowsAmount)
+		public HouseWithGarage(string typeOfBuilding, double sideLength, double basementHeight,
+			double floorHeight, int floorAmount, int windowsAmount, int openedWindowsAmount, double sideLengthG,
+			double sideWidthG, double heightG) :base(typeOfBuilding, sideLength, basementHeight, floorHeight, floorAmount, windowsAmount, openedWindowsAmount)
 		{
 			this.garage.setGarage(sideLengthG, sideWidthG, heightG);
 		}
@@ -41,7 +41,24 @@ namespace _3PR_Lab_12_CSharp
 			garage.inputGarage();
 		}
 
-		double getVolume()
+        public override string ToString()
+        {
+			string s = "";
+			s += "Свойства данного здания:\n" + "Название строительной компании: " +
+				Convert.ToString(companyName) + "\nОбщее количество зданий этой компании: " +
+				Convert.ToString(countOfBuildings) + "\nТип здания: " + Convert.ToString(typeOfBuilding) +
+				"\nДлина стороны основания: " + Convert.ToString(sideLength) + "\nВысота фундамента: " +
+				Convert.ToString(basementHeight) + "\nВысота этажа: " + Convert.ToString(floorHeight) +
+				"\nКоличество этажей: " + Convert.ToString(floorAmount) + "\nОбщее количество окон: " +
+				Convert.ToString(facade.getWindowsAmount()) + "\nКоличество открытых окон: " +
+				Convert.ToString(facade.getOpenedWindowsAmount()) + "\nКоэффициент устойчивости: " +
+				Convert.ToString(stabilityFactor) + "\nДанные о гараже:\nДлина стороны гаража: " +
+				Convert.ToString(getSideLength()) + "\nШирина стороны гаража: " +
+				Convert.ToString(getSideWidth()) + "\nВысота гаража: " + Convert.ToString(getHeight()) + "\n";
+			return s;
+		}
+
+        double getVolume()
 		{
 			return (sideLength * sideLength * floorHeight * floorAmount) +
 				(getSideLength() * getSideWidth() * getHeight());
