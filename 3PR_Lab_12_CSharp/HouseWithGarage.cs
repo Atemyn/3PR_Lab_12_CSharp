@@ -14,13 +14,7 @@ namespace _3PR_Lab_12_CSharp
 		}
 		public HouseWithGarage(string typeOfBuilding, double sideLength, double basementHeight,
 			double floorHeight, int floorAmount, int windowsAmount, int openedWindowsAmount, double sideLengthG,
-			double sideWidthG, double heightG) :base(typeOfBuilding, sideLength, basementHeight, floorHeight, floorAmount, windowsAmount, openedWindowsAmount)
-		{
-			this.garage.setGarage(sideLengthG, sideWidthG, heightG);
-		}
-
-		public HouseWithGarage(string typeOfBuilding, double sideLength, double basementHeight,
-			double floorHeight, int floorAmount, Facade facade, Garage garage)
+			double sideWidthG, double heightG)
 		{
 			this.typeOfBuilding = typeOfBuilding;
 			this.sideLength = sideLength;
@@ -28,9 +22,10 @@ namespace _3PR_Lab_12_CSharp
 			this.floorHeight = floorHeight;
 			this.floorAmount = floorAmount;
 			this.stabilityFactor = (double)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
-			this.facade = facade;
-			this.garage = garage;
+			this.facade = new Facade(windowsAmount, openedWindowsAmount);
+			this.garage = new Garage(sideLengthG, sideWidthG, heightG);
 		}
+
 		/* Функция по выводу свойств экземпляра класса Building. */
 		public void get()
 		{
@@ -99,8 +94,13 @@ namespace _3PR_Lab_12_CSharp
 
 		public object Clone()
 		{
-			return new HouseWithGarage(typeOfBuilding, sideLength, basementHeight,
-				floorHeight, floorAmount, facade, garage);
+			HouseWithGarage hg = new HouseWithGarage(typeOfBuilding, sideLength, basementHeight,
+				floorHeight, floorAmount, facade.getWindowsAmount(), facade.getOpenedWindowsAmount(),
+				getSideLength(), getSideWidth(), getHeight());
+			facade = (Facade)facade.Clone();
+			garage = (Garage)garage.Clone();
+			return hg;
 		}
+
 	}
 }

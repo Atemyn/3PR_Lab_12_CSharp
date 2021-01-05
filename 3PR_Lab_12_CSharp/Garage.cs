@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _3PR_Lab_12_CSharp
 {
-    class Garage
+    class Garage : ICloneable
     {
 		private double sideLength;
 		private double sideWidth;
@@ -74,6 +74,11 @@ namespace _3PR_Lab_12_CSharp
 		public double getHeight()
 		{
 			return height;
+		}
+
+		public object Clone()
+		{
+			return new Garage(sideLength, sideWidth, height);
 		}
 	}
 }

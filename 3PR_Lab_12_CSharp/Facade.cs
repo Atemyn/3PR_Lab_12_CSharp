@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _3PR_Lab_12_CSharp
 {
-	class Facade
+	class Facade : ICloneable
 	{
 		private int windowsAmount;
 		private int openedWindowsAmount;
@@ -107,6 +107,11 @@ namespace _3PR_Lab_12_CSharp
 			resultF.openedWindowsAmount = firstFacade.openedWindowsAmount + secondFacade.openedWindowsAmount;
 
 			return resultF;
+		}
+
+		public object Clone()
+		{
+			return new Facade(windowsAmount, openedWindowsAmount);
 		}
 	};
 }
