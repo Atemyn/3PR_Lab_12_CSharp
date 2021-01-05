@@ -55,6 +55,7 @@ namespace _3PR_Lab_12_CSharp
 			Launch(testStr);
 			Launch(testInt);
 			// Глубокое копирование.
+			Console.WriteLine();
 			HouseWithGarage hg1 = new HouseWithGarage("Коттедж", 5.0, 1.0, 3.0, 5, 5, 5, 1, 2, 3);
 			HouseWithGarage hg2 = new HouseWithGarage("Коттедж", 5.0, 1.0, 3.0, 5, 4, 4, 5, 6, 7);
 
