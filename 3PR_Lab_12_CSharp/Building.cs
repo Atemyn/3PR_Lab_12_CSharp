@@ -6,25 +6,25 @@ namespace _3PR_Lab_12_CSharp
 {
 	class Building
 	{
-		private static Exception e;
+		protected static Exception e;
 		// Количество когда-либо построенных зданий.
-		private static int countOfBuildings = 0;
+		protected static int countOfBuildings = 0;
 		// Тип здания.
-		private string typeOfBuilding;
+		protected string typeOfBuilding;
 		// Длина стороны основания.
-		private double sideLength;
+		protected double sideLength;
 		// Высота фундамента.
-		private double basementHeight;
+		protected double basementHeight;
 		// Высота этажа.
-		private double floorHeight;
+		protected double floorHeight;
 		// Количество этажей.
-		private int floorAmount;
+		protected int floorAmount;
 		// Объект класса фасада здания, содержащий информацию об окнах здания.
-		private Facade facade = new Facade();
+		protected Facade facade = new Facade();
 		// Коэффициент устойчивости.
-		private double stabilityFactor;
+		protected double stabilityFactor;
 		/* Функция по установке переданных значений в свойства экземпляра класса Building. */
-		private void setBuilding(string typeOfBuilding, double sideLength, double basementHeight, double floorHeight, int floorAmount, int windowsAmount, int openedWindowsAmount)
+		protected void setBuilding(string typeOfBuilding, double sideLength, double basementHeight, double floorHeight, int floorAmount, int windowsAmount, int openedWindowsAmount)
 		{
 			this.typeOfBuilding = typeOfBuilding;
 			this.sideLength = sideLength;
@@ -106,7 +106,7 @@ namespace _3PR_Lab_12_CSharp
 			Console.WriteLine("\n");
 		}
 		/* Функция по выводу свойств экземпляра класса Building. */
-		public void getBuilding()
+		public void get()
 		{
 			Console.WriteLine("Свойства данного здания:");
 			Console.WriteLine("Название строительной компании: " + companyName);
@@ -127,7 +127,7 @@ namespace _3PR_Lab_12_CSharp
 			facade.OpenedWindowsAmount = 0;
 		}
 		/* Функция по вводу с клавиатуры свойств для экземпляра класса Building */
-		public void inputBuilding()
+		public void input()
 		{
 			int flag = 0;
 			// Защиты от дурака для ввода всех необходимых данных.
@@ -241,7 +241,7 @@ namespace _3PR_Lab_12_CSharp
 				Console.WriteLine("Если НЕТ - нажмите Esc, если ДА - любую другую кнопку.\n");
 				if (Console.Read() != 27)
 				{
-					inputBuilding();
+					input();
 				}
 				else
 				{
@@ -298,7 +298,7 @@ namespace _3PR_Lab_12_CSharp
 			else
 			{
 				Console.WriteLine("Отлично! Новое здание устояло. Его свойства такие:\n");
-				getBuilding();
+				get();
 			}
 		}
 		/* Функция по добавлению floorsToAdd этажей экземпляру класса Building. */
@@ -326,7 +326,7 @@ namespace _3PR_Lab_12_CSharp
 			{
 				Console.WriteLine("Отлично! Здание получилось устойчивым с коэффициентом устойчивости k = " + stabilityFactor + "\n");
 				// Отображение информации о здании.
-				getBuilding();
+				get();
 			}
 		}
 
@@ -345,19 +345,19 @@ namespace _3PR_Lab_12_CSharp
 			stabilityFactor = (float)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
 			Console.WriteLine("Этажи успешно удалены!");
 			// Отображение информации о здании.
-			getBuilding();
+			get();
 		}
 
 		public void openWindowsOnFacade()
 		{
 			facade.openWindows();
-			getBuilding();
+			get();
 		}
 
 		public void closeWindowsOnFacade()
 		{
 			facade.closeWindows();
-			getBuilding();
+			get();
 		}
 
 		public double returnStabilityFactor()
