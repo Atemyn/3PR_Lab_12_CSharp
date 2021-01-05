@@ -5,6 +5,19 @@ namespace _3PR_Lab_12_CSharp
 {
 	class Program
 	{
+		static void Launch(object obj)
+		{
+			InterfaceFlyable flyable = obj as InterfaceFlyable;
+			if (flyable != null)
+			{
+				flyable.Fly();
+			}
+			else
+			{
+				Console.WriteLine("Объект типа " + obj.GetType() + " не может полететь.");
+			}
+		}
+
 		static void Main(string[] args)
 		{
 			/* Работа с производным классом. */
@@ -31,6 +44,16 @@ namespace _3PR_Lab_12_CSharp
 			Console.WriteLine("Здание с квадратным основанием:" + "\nОбъем: " + s.getVolume() + "\nПлотность: " + s.getDensity() + "\n");
 			Console.WriteLine("Здание с круглым основанием:" + "\nОбъем: " + c.getVolume() + "\nПлотность: " + c.getDensity() + "\n");
 			Console.WriteLine("Здание-тетраэдр:" + "\nОбъем: " + t.getVolume() + "\nПлотность: " + t.getDensity() + "\n");
+			// Разумное использование интерфейса.
+			Plane plane = new Plane("Люкс-1892");
+			Rock rock = new Rock();
+			string testStr = "Могу ли я полететь?";
+			int testInt = 401;
+
+			Launch(plane);
+			Launch(rock);
+			Launch(testStr);
+			Launch(testInt);
 			/*...............................*/
 		}
 	}
